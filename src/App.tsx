@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import DashboardClient from "./pages/DashboardClient";
 import EventosStaff from "./pages/EventosStaff";
+import Perfil from "./pages/Perfil";
+import Chat from "./pages/Chat";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<DashboardClient />} />
           <Route path="/eventos" element={<EventosStaff />} />
+          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

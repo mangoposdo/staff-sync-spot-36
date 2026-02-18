@@ -1,0 +1,9 @@
+{
+  "appId": "app.lovable.d0b908412bad4b4cbd8d7c8b3237c483",
+  "appName": "Tu Staff",
+  "webDir": "dist",
+  "server": {
+    "url": "https://d0b90841-2bad-4b4c-bd8d-7c8b3237c483.lovableproject.com?forceHideBadge=true",
+    "cleartext": true
+  }
+}
