@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppModeProvider } from "@/hooks/useAppMode";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import DashboardClient from "./pages/DashboardClient";
@@ -16,19 +17,21 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/dashboard" element={<DashboardClient />} />
-          <Route path="/eventos" element={<EventosStaff />} />
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AppModeProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/dashboard" element={<DashboardClient />} />
+            <Route path="/eventos" element={<EventosStaff />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AppModeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
