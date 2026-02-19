@@ -1,0 +1,29 @@
+import { createContext, useContext, useState, ReactNode } from "react";
+
+type AppMode = "client" | "staff";
+
+interface AppModeContextType {
+  mode: AppMode;
+  toggleMode: () => void;
+  setMode: (mode: AppMode) => void;
+}
+
+const AppModeContext = createContext<AppModeContextType | undefined>(undefined);
+
+export const AppModeProvider = ({ children }: { children: ReactNode }) => {
+  const [mode, setMode] = useState<AppMode>("client");
+
+  const toggleMode = () => setMode((prev) => (prev === "client" ? "staff" : "client"));
+
+  return (
+    <AppModeContext.Provider value={{ mode, toggleMode, setMode }}>
+      {children}
+    </AppModeContext.Provider>
+  );
+};
+
+export const useAppMode = () => {
+  const context = useContext(AppModeContext);
+  if (!context) throw new Error("useAppMode must be used within AppModeProvider");
+  return context;
+};
